@@ -139,12 +139,12 @@ RUN apt-get update && \
         pkg-config \
         libxml2-dev \
         libxmlsec1-dev \
-        xmlsec1 \
         libxmlsec1-openssl \
         python3-pycryptodome \
         python3-pykcs11 \
-
-
+        build-essential \
+        linux-headers-generic \
+        python3-dev \
     && curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.buster_amd64.deb \
     && echo 'ea8277df4297afc507c61122f3c349af142f31e5 wkhtmltox.deb' | sha1sum -c - \
     && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
@@ -212,11 +212,10 @@ RUN apt-get update && \
         platformdirs \
         jose \
         tomli \
-        xmlsec==1.3.13
-
-
+        xmlsec==1.3.3 \
+        ldap3
 # install latest postgresql-client
-RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
+RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
     && GNUPGHOME="$(mktemp -d)" \
     && export GNUPGHOME \
     && repokey='B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8' \
