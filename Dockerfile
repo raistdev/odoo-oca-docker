@@ -1,5 +1,6 @@
 FROM debian:bullseye-slim
-LABEL author: raistdev
+LABEL org.opencontainers.image.authors="raistdev"
+
 
 SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 
